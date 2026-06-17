@@ -1,0 +1,208 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+/* premium health theme — Dr. Juliano Plastina */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Tipografia */
+  --font-sans: var(--font-geist-sans), 'Geist Fallback', system-ui, sans-serif;
+  --font-serif: var(--font-playfair), 'Playfair Display Fallback', Georgia, serif;
+  --font-heading: var(--font-playfair), 'Playfair Display Fallback', Georgia, serif;
+  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback', monospace;
+
+  /* Shadcn / Tailwind semantic colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Tokens próprios do design-system */
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-gold: var(--gold);
+  --color-sage: var(--sage);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+/* 
+  Paleta primária:
+  Navy profundo: #0D1B2A
+  Off-white quente: #F7F6F2
+  Verde clínico: #1A6B52
+  Âmbar discreto: #D4A853
+  Grafite textual: #1F2933
+  Cinza técnico: #7A828A
+*/
+
+:root {
+  color-scheme: light;
+  --radius: 1rem;
+
+  /* Base */
+  --background: #f7f6f2;
+  --foreground: #1f2933;
+
+  /* Cards e superfícies */
+  --card: #ffffff;
+  --card-foreground: #1f2933;
+
+  --popover: #ffffff;
+  --popover-foreground: #1f2933;
+
+  /* CTA / assinatura principal */
+  --primary: #1a6b52;
+  --primary-foreground: #f7f6f2;
+
+  /* Superfícies secundárias */
+  --secondary: #eeece5;
+  --secondary-foreground: #0d1b2a;
+
+  --muted: #eeece5;
+  --muted-foreground: #7a828a;
+
+  /* Destaque premium */
+  --accent: #d4a853;
+  --accent-foreground: #0d1b2a;
+
+  /* Estados */
+  --destructive: #b42318;
+
+  /* Linhas, inputs e foco */
+  --border: #dedbd2;
+  --input: #dedbd2;
+  --ring: #1a6b52;
+
+  /* Seções escuras / hero / footer */
+  --deep: #0d1b2a;
+  --deep-foreground: #f7f6f2;
+
+  /* Tokens auxiliares */
+  --gold: #d4a853;
+  --sage: #d8e5dd;
+
+  /* Charts / variações editoriais */
+  --chart-1: #1a6b52;
+  --chart-2: #d4a853;
+  --chart-3: #0d1b2a;
+  --chart-4: #7a828a;
+  --chart-5: #1f2933;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::selection {
+    background-color: var(--gold);
+    color: var(--deep);
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* ===== Scroll reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  filter: blur(6px);
+  transition:
+    opacity 0.85s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.85s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===== Marquee ===== */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+/* ===== Floating animation ===== */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
