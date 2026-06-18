@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 export function VideoHero() {
   return (
@@ -38,7 +37,7 @@ export function VideoHero() {
         <div className="max-w-4xl">
           <div className="mb-8 inline-flex items-center gap-3">
             <span className="h-px w-10 bg-gold" aria-hidden="true" />
-            <span className="font-mono text-xs uppercase tracking-[0.32em] text-gold">
+            <span className="font-label text-xs font-semibold uppercase tracking-[0.32em] text-gold">
               Protocolo Presença Exponencial
             </span>
           </div>
@@ -54,7 +53,9 @@ export function VideoHero() {
 
             <p className="max-w-3xl font-heading text-balance text-3xl font-medium leading-[1.08] tracking-tight text-deep-foreground sm:text-4xl md:text-5xl lg:text-6xl">
               atendendo, operando e{" "}
-              <span className="italic text-gold">sem gastar com tráfego.</span>
+              <span className="font-semibold text-gold">
+                sem gastar com tráfego.
+              </span>
             </p>
           </div>
 
@@ -68,18 +69,15 @@ export function VideoHero() {
           </p>
 
           <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <Button
-              asChild
-              size="lg"
-              className="group h-14 rounded-full bg-gold px-8 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 transition-all hover:bg-gold/90 hover:shadow-black/30"
+            <a
+              href="#inscricao"
+              className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gold px-8 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-gold/90 hover:shadow-black/30"
             >
-              <a href="#inscricao">
-                Quero crescer no Instagram
-                <ArrowRight className="ml-1 size-5 transition-transform group-hover:translate-x-1" />
-              </a>
-            </Button>
+              Quero crescer no Instagram
+              <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+            </a>
 
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-deep-foreground/68 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+            <p className="font-label text-xs font-semibold uppercase tracking-[0.2em] text-deep-foreground/68 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
               Vagas limitadas por turma
             </p>
           </div>

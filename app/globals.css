@@ -7,11 +7,17 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Tipografia */
-  --font-sans: var(--font-geist-sans), 'Geist Fallback', system-ui, sans-serif;
-  --font-serif: var(--font-playfair), 'Playfair Display Fallback', Georgia, serif;
-  --font-heading: var(--font-playfair), 'Playfair Display Fallback', Georgia, serif;
-  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback', monospace;
+  /* Tipografia
+     Site alinhado aos templates Canva:
+     - Títulos/subtítulos: Sora
+     - Texto geral: Poppins
+     - Labels/badges/microcopy: Urbanist
+  */
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-heading: var(--font-sora), var(--font-poppins), system-ui, sans-serif;
+  --font-serif: var(--font-sora), var(--font-poppins), system-ui, sans-serif;
+  --font-label: var(--font-urbanist), var(--font-poppins), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 
   /* Shadcn / Tailwind semantic colors */
   --color-background: var(--background);
@@ -138,7 +144,11 @@
   }
 
   .font-serif {
-    font-family: var(--font-serif);
+    font-family: var(--font-heading);
+  }
+
+  .font-label {
+    font-family: var(--font-label);
   }
 
   .text-balance {
@@ -205,4 +215,38 @@
 
 .animate-float-soft {
   animation: float-soft 6s ease-in-out infinite;
+}
+
+/* ===== Font enforcement — PPE sem serifas ===== */
+
+body {
+  font-family: var(--font-poppins), system-ui, sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading,
+.font-serif {
+  font-family: var(--font-sora), var(--font-poppins), system-ui, sans-serif !important;
+}
+
+.font-sans,
+p,
+a,
+button,
+input,
+textarea,
+select,
+li {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+.font-label,
+.font-mono-label,
+[data-label='true'] {
+  font-family: var(--font-urbanist), var(--font-poppins), system-ui, sans-serif !important;
 }
