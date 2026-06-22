@@ -63,7 +63,7 @@ export function FinalCta() {
         <Reveal delay={200}>
           <div className="mt-10">
             <a
-              href="#oferta"
+              href="/analise-de-perfil"
               className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-base font-semibold text-accent-foreground shadow-lg shadow-black/15 transition-all hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-black/25"
             >
               Quero entrar no PPE agora

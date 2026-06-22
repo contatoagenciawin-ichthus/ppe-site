@@ -32,7 +32,7 @@ export function TopBar() {
           Dr. Juliano Plastina
         </span>
         <a
-          href="#oferta"
+          href="/analise-de-perfil"
           className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Quero minha vaga

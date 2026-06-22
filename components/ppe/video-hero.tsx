@@ -70,7 +70,7 @@ export function VideoHero() {
 
           <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <a
-              href="#inscricao"
+              href="/analise-de-perfil"
               className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gold px-8 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-gold/90 hover:shadow-black/30"
             >
               Quero crescer no Instagram

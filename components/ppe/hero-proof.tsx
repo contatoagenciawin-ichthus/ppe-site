@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ArrowRight, BadgeCheck, Stethoscope } from 'lucide-react'
+import { ArrowRight, Stethoscope } from 'lucide-react'
 import { Reveal } from './reveal'
 import { CountUp } from './count-up'
 
@@ -19,7 +19,7 @@ export function HeroProof() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1fr_0.9fr]">
         <div>
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card px-4 py-1.5 font-label text-xs font-semibold uppercase tracking-[0.18em] text-primary">
               <Stethoscope className="h-4 w-4" />
               Mentoria para médicos
             </span>
@@ -43,10 +43,10 @@ export function HeroProof() {
           <Reveal delay={300}>
             <div className="mt-8">
               <a
-                href="#oferta"
+                href="/analise-de-perfil"
                 className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
               >
-                Quero minha vaga
+                Quero minha análise de perfil
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
 
@@ -93,7 +93,7 @@ export function HeroProof() {
             className="absolute inset-0 rounded-[3rem] bg-primary/10 blur-3xl"
           />
 
-          <div className="animate-float-soft relative mx-auto w-[310px] sm:w-[340px] rounded-[2.8rem] border border-[#24476f] bg-[#081a33] p-[10px] shadow-[0_30px_80px_rgba(8,26,51,0.35)]">
+          <div className="animate-float-soft relative mx-auto w-[310px] rounded-[2.8rem] border border-[#24476f] bg-[#081a33] p-[10px] shadow-[0_30px_80px_rgba(8,26,51,0.35)] sm:w-[340px]">
             {/* notch */}
             <div className="absolute left-1/2 top-2.5 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-black/85" />
 
@@ -144,23 +144,12 @@ export function HeroProof() {
           </div>
 
           {/* top badge */}
-          <div className="absolute left-0 top-10 sm:-left-2 animate-float-soft rounded-2xl border border-accent/35 bg-[#081a33] px-5 py-4 text-white shadow-xl">
+          <div className="animate-float-soft absolute left-0 top-10 rounded-2xl border border-accent/35 bg-[#081a33] px-5 py-4 text-white shadow-xl sm:-left-2">
             <p className="font-heading text-2xl font-semibold leading-none text-accent">
               17 milhões
             </p>
             <p className="mt-1 text-xs text-white/75">
               de visualizações neste vídeo
-            </p>
-          </div>
-
-          {/* bottom badge */}
-          <div className="absolute -right-2 bottom-14 animate-float-soft rounded-2xl border border-accent/35 bg-[#081a33] px-5 py-4 text-white shadow-xl">
-            <p className="flex items-center gap-1.5 font-heading text-2xl font-semibold leading-none text-[#7ec0ff]">
-              <BadgeCheck className="h-5 w-5 text-accent" />
-              +81 mil
-            </p>
-            <p className="mt-1 text-xs text-white/75">
-              seguidores com 1 vídeo
             </p>
           </div>
         </Reveal>

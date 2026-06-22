@@ -8,23 +8,22 @@ import { Reveal } from './reveal'
 const proofCards = [
   {
     image: '/proof-video-17m.png',
-    value: '17 milhões',
+    value: 'Quase 14 Milhões de alcance',
     label:
-      'de visualizações em um único vídeo — gravado com o celular na sala do robô',
+      'Num único vídeo foram quase 1,6 milhões de interações. Custo zero!',
     tone: 'gold',
   },
   {
     image: '/proof-insights-81k.png',
     value: '+81 mil',
-    label:
-      'seguidores gerados com um único vídeo — print real dos insights',
+    label: 'seguidores gerados com um único vídeo — print real dos insights',
     tone: 'blue',
   },
   {
     image: '/proof-carousel-200k.png',
-    value: '+200 mil',
+    value: 'Milhões de Views',
     label:
-      'seguidores com um único conteúdo — um carrossel simples, feito no celular',
+      'Meus vídeos tinham 1.000, 2.000 visualizações. Agora a média é de MILHÔES.',
     tone: 'gold',
   },
 ] as const
@@ -59,7 +58,7 @@ export function Results() {
           <Reveal>
             <div className="inline-flex items-center gap-3">
               <span className="h-px w-8 bg-gold" aria-hidden="true" />
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-gold">
+              <span className="font-label text-xs font-semibold uppercase tracking-[0.28em] text-gold">
                 Prova, não promessa
               </span>
               <span className="h-px w-8 bg-gold" aria-hidden="true" />
@@ -230,14 +229,14 @@ function ProofPhoneCard({
       <div className="px-2 pb-2 pt-6 text-center">
         <p
           className={[
-            'font-heading text-3xl font-semibold leading-none',
+            'mx-auto max-w-[12ch] font-heading text-2xl font-semibold leading-tight md:text-3xl',
             card.tone === 'gold' ? 'text-gold' : 'text-[#7ec0ff]',
           ].join(' ')}
         >
           {card.value}
         </p>
 
-        <p className="mx-auto mt-3 max-w-[25ch] text-sm leading-relaxed text-deep-foreground/72">
+        <p className="mx-auto mt-3 max-w-[29ch] text-sm leading-relaxed text-deep-foreground/72">
           {card.label}
         </p>
       </div>
