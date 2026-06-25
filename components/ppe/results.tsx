@@ -8,22 +8,23 @@ import { Reveal } from './reveal'
 const proofCards = [
   {
     image: '/proof-video-17m.png',
-    value: 'Quase 14 Milhões de alcance',
+    value: 'Mais de 17 milhões de alcance',
     label:
-      'Num único vídeo foram quase 1,6 milhões de interações. Custo zero!',
+      'Num único vídeo foram quase 1,6 milhão de interações. Custo zero.',
     tone: 'gold',
   },
   {
-    image: '/proof-insights-81k.png',
-    value: '+81 mil',
-    label: 'seguidores gerados com um único vídeo — print real dos insights',
+    image: '/proof-followers-81k-video.png',
+    value: '+81 mil seguidores',
+    label:
+      'Seguidores gerados a partir de um único conteúdo — print real dos insights.',
     tone: 'blue',
   },
   {
     image: '/proof-carousel-200k.png',
-    value: 'Milhões de Views',
+    value: 'Milhões de views',
     label:
-      'Meus vídeos tinham 1.000, 2.000 visualizações. Agora a média é de MILHÔES.',
+      'Meus vídeos tinham 1.000, 2.000 visualizações. Agora a média é de MILHÕES.',
     tone: 'gold',
   },
 ] as const
@@ -31,7 +32,6 @@ const proofCards = [
 export function Results() {
   return (
     <section className="relative overflow-hidden bg-deep py-24 text-deep-foreground md:py-28">
-      {/* fundos premium */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-40 top-0 h-[36rem] w-[36rem] rounded-full bg-primary/20 blur-3xl"
@@ -53,7 +53,6 @@ export function Results() {
       />
 
       <div className="relative mx-auto max-w-6xl px-6">
-        {/* header */}
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <div className="inline-flex items-center gap-3">
@@ -84,14 +83,12 @@ export function Results() {
           </Reveal>
         </div>
 
-        {/* mobile proof cards */}
         <div className="mx-auto mt-14 grid max-w-[1120px] gap-6 md:grid-cols-3">
           {proofCards.map((card, index) => (
             <ProofPhoneCard key={card.value} card={card} delay={index * 120} />
           ))}
         </div>
 
-        {/* wide proof */}
         <Reveal delay={180}>
           <div className="mx-auto mt-12 max-w-4xl">
             <div className="overflow-hidden rounded-2xl border border-gold/40 bg-black/20 p-2 shadow-2xl shadow-black/20">
@@ -116,7 +113,6 @@ export function Results() {
           </div>
         </Reveal>
 
-        {/* bottom metrics */}
         <div className="mx-auto mt-14 grid max-w-5xl gap-4 md:grid-cols-4">
           <MiniMetric
             icon={<Users className="h-4 w-4" />}
@@ -164,7 +160,6 @@ function ProofPhoneCard({
       delay={delay}
       className="group rounded-[2rem] border border-white/10 bg-white/[0.035] p-4 shadow-2xl shadow-black/15 backdrop-blur-sm transition-all hover:-translate-y-1.5 hover:border-gold/40 hover:bg-white/[0.05]"
     >
-      {/* halo */}
       <div className="relative mx-auto">
         <div
           aria-hidden="true"
@@ -174,19 +169,14 @@ function ProofPhoneCard({
           ].join(' ')}
         />
 
-        {/* phone shell */}
         <div className="relative mx-auto w-full max-w-[290px] rounded-[2.8rem] border border-[#24476f] bg-[#081a33] p-[10px] shadow-[0_24px_60px_rgba(0,0,0,0.28)] transition-transform duration-500 group-hover:scale-[1.015]">
-          {/* side buttons */}
           <div className="absolute -left-[2px] top-24 h-14 w-[3px] rounded-full bg-white/12" />
           <div className="absolute -left-[2px] top-44 h-10 w-[3px] rounded-full bg-white/12" />
           <div className="absolute -right-[2px] top-36 h-16 w-[3px] rounded-full bg-white/12" />
 
-          {/* notch */}
           <div className="absolute left-1/2 top-2.5 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-black/80" />
 
-          {/* screen */}
           <div className="relative aspect-[9/16] overflow-hidden rounded-[2.15rem] border border-white/6 bg-[linear-gradient(180deg,#11294d_0%,#081a33_100%)]">
-            {/* faint grid */}
             <div
               aria-hidden="true"
               className="absolute inset-0 opacity-[0.08]"
@@ -197,10 +187,8 @@ function ProofPhoneCard({
               }}
             />
 
-            {/* top fade */}
             <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 bg-gradient-to-b from-black/30 to-transparent" />
 
-            {/* image */}
             <div className="absolute inset-3 z-0 overflow-hidden rounded-[1.5rem] bg-black/20">
               <Image
                 src={card.image}
@@ -211,32 +199,28 @@ function ProofPhoneCard({
               />
             </div>
 
-            {/* bottom fade */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-[#081a33]/80 to-transparent" />
 
-            {/* small proof label */}
             <div className="absolute bottom-4 left-4 right-4 z-20 rounded-2xl bg-black/40 px-3 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-white/75 backdrop-blur-md">
               Print real
             </div>
           </div>
 
-          {/* subtle inner ring */}
           <div className="pointer-events-none absolute inset-[10px] rounded-[2.15rem] ring-1 ring-white/6" />
         </div>
       </div>
 
-      {/* text */}
       <div className="px-2 pb-2 pt-6 text-center">
         <p
           className={[
-            'mx-auto max-w-[12ch] font-heading text-2xl font-semibold leading-tight md:text-3xl',
+            'mx-auto max-w-[13ch] font-heading text-2xl font-semibold leading-tight md:text-3xl',
             card.tone === 'gold' ? 'text-gold' : 'text-[#7ec0ff]',
           ].join(' ')}
         >
           {card.value}
         </p>
 
-        <p className="mx-auto mt-3 max-w-[29ch] text-sm leading-relaxed text-deep-foreground/72">
+        <p className="mx-auto mt-3 max-w-[30ch] text-sm leading-relaxed text-deep-foreground/72">
           {card.label}
         </p>
       </div>

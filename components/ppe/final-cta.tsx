@@ -71,8 +71,7 @@ export function FinalCta() {
             </a>
 
             <p className="mt-4 text-sm text-primary-foreground/78">
-              6x de R$ 2.760 ou R$ 14.990 à vista • Garantia incondicional de 7
-              dias
+              A análise perfil é gratuita, e sera feita devolutiva com um PDF e possível contato para conversar
             </p>
           </div>
         </Reveal>
