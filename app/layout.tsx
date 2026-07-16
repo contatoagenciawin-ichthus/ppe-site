@@ -40,6 +40,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body
         className={`${sora.variable} ${poppins.variable} ${urbanist.variable} ${geistMono.variable} antialiased`}
+        >
       <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
