@@ -40,8 +40,8 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body
         className={`${sora.variable} ${poppins.variable} ${urbanist.variable} ${geistMono.variable} antialiased`}
-        >
-      <Script id="meta-pixel" strategy="afterInteractive">
+      >
+        <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -55,8 +55,16 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
-        
-        
+
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "xqy9zh6eov");
+          `}
+        </Script>
 
         <noscript>
           <img
