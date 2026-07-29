@@ -487,7 +487,7 @@ function VslPlayer() {
           controls
           playsInline
           preload="metadata"
-          poster="/final-cta-poster.jpg"
+          poster="/vsl-analise-perfil-poster.jpg"
           className="h-full w-full"
           onPlay={() => trackClarity('vsl_video_started')}
           onTimeUpdate={handleTimeUpdate}
