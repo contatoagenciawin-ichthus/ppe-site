@@ -9,33 +9,52 @@ import {
   Loader2,
   ShieldCheck,
   Sparkles,
+  TrendingUp,
 } from 'lucide-react'
+import Image from 'next/image'
 import { Eyebrow } from '@/components/ppe/eyebrow'
 import { Reveal } from '@/components/ppe/reveal'
 
 type FormState = {
   name: string
-  email: string
   whatsapp: string
   specialty: string
-  location: string
   instagram: string
-  difficulty: string
-  goal: string
   consent: boolean
 }
 
 const initialState: FormState = {
   name: '',
-  email: '',
   whatsapp: '',
   specialty: '',
-  location: '',
   instagram: '',
-  difficulty: '',
-  goal: '',
   consent: false,
 }
+
+const specialties = [
+  'Anestesiologia',
+  'Cardiologia',
+  'Cirurgia Geral',
+  'Cirurgia Plástica',
+  'Clínica Médica',
+  'Dermatologia',
+  'Endocrinologia',
+  'Gastroenterologia',
+  'Geriatria',
+  'Ginecologia e Obstetrícia',
+  'Medicina de Família e Comunidade',
+  'Neurologia',
+  'Oftalmologia',
+  'Oncologia',
+  'Ortopedia e Traumatologia',
+  'Otorrinolaringologia',
+  'Pediatria',
+  'Psiquiatria',
+  'Radiologia',
+  'Reumatologia',
+  'Urologia',
+  'Outra especialidade',
+]
 
 export default function AnaliseDePerfilPage() {
   const router = useRouter()
@@ -84,7 +103,7 @@ export default function AnaliseDePerfilPage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <section className="relative overflow-hidden bg-deep py-24 text-deep-foreground md:py-28">
+      <section className="relative overflow-hidden bg-deep pb-16 pt-16 text-deep-foreground md:pb-20 md:pt-24">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -left-40 top-0 h-[34rem] w-[34rem] rounded-full bg-primary/24 blur-3xl"
@@ -105,63 +124,130 @@ export default function AnaliseDePerfilPage() {
           }}
         />
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-[1fr_0.86fr] md:items-center md:px-10">
-          <div>
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+          <div className="max-w-4xl">
             <Reveal>
-              <Eyebrow className="text-gold">Análise estratégica de perfil</Eyebrow>
+              <Eyebrow className="text-gold">Análise gratuita de perfil médico</Eyebrow>
             </Reveal>
 
             <Reveal delay={80}>
               <h1 className="mt-6 max-w-4xl text-balance font-heading text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-                Candidate seu perfil médico para uma análise estratégica.
+                Sua experiência médica pode gerar mais autoridade e demanda no
+                digital.
               </h1>
             </Reveal>
 
             <Reveal delay={140}>
               <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-deep-foreground/76 md:text-xl">
-                O Dr. Juliano e sua equipe avaliam perfis com potencial real de
-                melhoria para identificar oportunidades de posicionamento,
-                conteúdo e presença digital.
+                Descubra o que pode estar limitando o crescimento do seu perfil
+                e quais ajustes podem fortalecer sua presença digital.
               </p>
             </Reveal>
 
             <Reveal delay={200}>
-              <div className="mt-8 grid max-w-2xl gap-4 sm:grid-cols-3">
-                {[
-                  ['653 mil', 'seguidores'],
-                  ['20M+', 'views/mês'],
-                  ['R$0', 'em tráfego'],
-                ].map(([value, label]) => (
-                  <div
-                    key={value}
-                    className="rounded-2xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-sm"
-                  >
-                    <p className="font-heading text-3xl font-semibold text-gold">
-                      {value}
-                    </p>
-                    <p className="mt-1 font-label text-xs font-semibold uppercase tracking-[0.18em] text-deep-foreground/62">
-                      {label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <a
+                href="#formulario"
+                className="group mt-8 inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gold px-8 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-gold/90"
+              >
+                Quero minha análise de perfil gratuita
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
             </Reveal>
 
             <Reveal delay={260}>
-              <div className="mt-8 max-w-2xl rounded-2xl border border-gold/25 bg-gold/10 p-5">
+              <div className="mt-6 max-w-2xl rounded-2xl border border-gold/25 bg-gold/10 p-5">
                 <div className="flex gap-3">
                   <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
                   <p className="text-sm leading-relaxed text-deep-foreground/76">
-                    O envio da candidatura não garante vaga na mentoria. As
-                    análises são direcionadas a médicos com aderência ao PPE e
-                    potencial real de aplicação do método.
+                    A análise é gratuita e seletiva. Avaliamos poucos perfis por
+                    semana para garantir atenção real ao seu caso — não é uma
+                    triagem automática.
                   </p>
                 </div>
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
 
-          <Reveal delay={180}>
+      <section className="bg-background py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <Reveal>
+            <div className="mb-8 max-w-3xl">
+              <Eyebrow>Resultados reais</Eyebrow>
+              <h2 className="mt-4 text-balance font-heading text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+                Método aplicado por médicos que decidiram construir presença com
+                direção.
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {[
+              {
+                image: '/social-gabriel-antes.png',
+                name: 'Gabriel Chaves',
+                result: 'De um perfil estagnado a uma presença com estratégia.',
+              },
+              {
+                image: '/social-gabriel-insights.png',
+                name: 'Crescimento mensurável',
+                result: 'Alcance e conteúdo transformados em sinais concretos.',
+              },
+              {
+                image: '/social-felipe-print.png',
+                name: 'Felipe Rodrigues',
+                result: 'Mais de 122 mil contas alcançadas em um único conteúdo.',
+              },
+            ].map((proof, index) => (
+              <Reveal
+                key={proof.name}
+                delay={index * 80}
+                className="overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-xl shadow-primary/5"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                  <Image
+                    src={proof.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-2 text-primary">
+                    <TrendingUp className="h-4 w-4" />
+                    <p className="font-label text-xs font-semibold uppercase tracking-[0.16em]">
+                      {proof.name}
+                    </p>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {proof.result}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="formulario" className="bg-deep py-16 text-deep-foreground md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[0.82fr_1fr] md:items-start md:px-10">
+          <Reveal>
+            <div className="md:sticky md:top-10">
+              <Eyebrow className="text-gold">Próximo passo</Eyebrow>
+              <h2 className="mt-5 text-balance font-heading text-3xl font-semibold leading-tight md:text-5xl">
+                Solicite sua análise em menos de um minuto.
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-deep-foreground/72">
+                Precisamos apenas dos dados essenciais para localizar seu perfil
+                e entrar em contato. A qualificação detalhada acontece depois,
+                pelo WhatsApp.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100}>
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
               <div className="rounded-[1.5rem] border border-white/10 bg-[#071426] p-6">
                 <div className="mb-6 flex items-start justify-between gap-4">
@@ -189,38 +275,20 @@ export default function AnaliseDePerfilPage() {
                   />
 
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <Input
-                      label="E-mail"
-                      type="email"
-                      value={form.email}
-                      onChange={(value) => updateField('email', value)}
-                      placeholder="seuemail@exemplo.com"
+                    <Select
+                      label="Especialidade médica"
+                      value={form.specialty}
+                      onChange={(value) => updateField('specialty', value)}
+                      options={specialties}
                       required
                     />
 
                     <Input
                       label="WhatsApp"
+                      type="tel"
                       value={form.whatsapp}
                       onChange={(value) => updateField('whatsapp', value)}
                       placeholder="(00) 00000-0000"
-                      required
-                    />
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Input
-                      label="Especialidade médica"
-                      value={form.specialty}
-                      onChange={(value) => updateField('specialty', value)}
-                      placeholder="Ex.: Cirurgia Plástica"
-                      required
-                    />
-
-                    <Input
-                      label="Cidade / Estado"
-                      value={form.location}
-                      onChange={(value) => updateField('location', value)}
-                      placeholder="Ex.: São Paulo / SP"
                       required
                     />
                   </div>
@@ -230,22 +298,6 @@ export default function AnaliseDePerfilPage() {
                     value={form.instagram}
                     onChange={(value) => updateField('instagram', value)}
                     placeholder="@seuperfil"
-                    required
-                  />
-
-                  <Textarea
-                    label="Principal dificuldade hoje no Instagram"
-                    value={form.difficulty}
-                    onChange={(value) => updateField('difficulty', value)}
-                    placeholder="Conte brevemente o que mais trava seu crescimento, posicionamento ou geração de pacientes."
-                    required
-                  />
-
-                  <Textarea
-                    label="Objetivo com a presença digital"
-                    value={form.goal}
-                    onChange={(value) => updateField('goal', value)}
-                    placeholder="Ex.: aumentar autoridade, atrair pacientes particulares, melhorar conteúdo, crescer com consistência..."
                     required
                   />
 
@@ -285,7 +337,7 @@ export default function AnaliseDePerfilPage() {
                       </>
                     ) : (
                       <>
-                        Candidatar meu perfil para análise
+                        Quero minha análise de perfil gratuita
                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                       </>
                     )}
@@ -297,7 +349,7 @@ export default function AnaliseDePerfilPage() {
         </div>
       </section>
 
-      <section className="bg-background py-20 md:py-24">
+      <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-6 md:grid-cols-3">
             {[
@@ -389,17 +441,17 @@ function Input({
   )
 }
 
-function Textarea({
+function Select({
   label,
   value,
   onChange,
-  placeholder,
+  options,
   required,
 }: {
   label: string
   value: string
   onChange: (value: string) => void
-  placeholder?: string
+  options: string[]
   required?: boolean
 }) {
   return (
@@ -408,14 +460,21 @@ function Textarea({
         {label}
       </span>
 
-      <textarea
+      <select
         value={value}
         required={required}
         onChange={(event) => onChange(event.target.value)}
-        placeholder={placeholder}
-        rows={4}
-        className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.055] px-4 py-3 text-sm leading-relaxed text-deep-foreground outline-none transition placeholder:text-deep-foreground/32 focus:border-gold/50 focus:bg-white/[0.075]"
-      />
+        className="h-12 w-full rounded-2xl border border-white/10 bg-[#0d1d32] px-4 text-sm text-deep-foreground outline-none transition focus:border-gold/50"
+      >
+        <option value="" disabled>
+          Selecione
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </label>
   )
 }

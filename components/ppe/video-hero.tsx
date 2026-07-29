@@ -4,17 +4,26 @@ export function VideoHero() {
   return (
     <section className="relative flex min-h-svh w-full items-center overflow-hidden bg-deep text-deep-foreground">
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 hidden h-full w-full object-cover md:block"
         autoPlay
         loop
         muted
         playsInline
-        preload="auto"
-        poster="/hero-poster.png"
+        preload="metadata"
+        poster="/hero-poster.jpg"
         aria-hidden="true"
       >
-        <source src="/drjuliano.mp4" type="video/mp4" />
+        <source
+          src="/drjuliano.mp4"
+          type="video/mp4"
+          media="(min-width: 768px)"
+        />
       </video>
+
+      <div
+        className="absolute inset-0 bg-[url('/hero-poster.jpg')] bg-cover bg-[68%_center] md:hidden"
+        aria-hidden="true"
+      />
 
       <div className="absolute inset-0 bg-deep/24" aria-hidden="true" />
 
