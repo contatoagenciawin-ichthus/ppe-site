@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   ArrowRight,
@@ -56,11 +56,67 @@ const specialties = [
   'Outra especialidade',
 ]
 
+type CtaVariant = 'A' | 'B'
+
+const ctaExperiment = {
+  A: {
+    name: 'gold',
+    className: 'bg-gold text-accent-foreground hover:bg-gold/90',
+  },
+  B: {
+    name: 'coral',
+    className: 'bg-[#F07A3E] text-[#0D1B2A] hover:bg-[#E96C2E]',
+  },
+} as const
+
+function trackClarity(eventName: string) {
+  if (typeof window === 'undefined') return
+
+  const clarity = (
+    window as Window & {
+      clarity?: (...args: string[]) => void
+    }
+  ).clarity
+
+  clarity?.('event', eventName)
+}
+
 export default function AnaliseDePerfilPage() {
   const router = useRouter()
   const [form, setForm] = useState<FormState>(initialState)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
+  const [ctaVariant, setCtaVariant] = useState<CtaVariant>('A')
+  const variant = ctaExperiment[ctaVariant]
+
+  useEffect(() => {
+    const storageKey = 'ppe-cta-color-variant'
+    const storedVariant = window.localStorage.getItem(storageKey)
+    const selectedVariant: CtaVariant =
+      storedVariant === 'A' || storedVariant === 'B'
+        ? storedVariant
+        : Math.random() < 0.5
+          ? 'A'
+          : 'B'
+
+    window.localStorage.setItem(storageKey, selectedVariant)
+    setCtaVariant(selectedVariant)
+
+    const clarity = (
+      window as Window & {
+        clarity?: (...args: string[]) => void
+      }
+    ).clarity
+
+    clarity?.(
+      'set',
+      'cta_color_variant',
+      `${selectedVariant}_${ctaExperiment[selectedVariant].name}`
+    )
+    trackClarity(
+      `cta_color_experiment_view_${selectedVariant}_${ctaExperiment[selectedVariant].name}`
+    )
+  }, [])
 
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [key]: value }))
@@ -80,6 +136,7 @@ export default function AnaliseDePerfilPage() {
         body: JSON.stringify({
           ...form,
           source: 'analise-de-perfil',
+          experimentVariant: `${ctaVariant}_${variant.name}`,
         }),
       })
 
@@ -89,6 +146,7 @@ export default function AnaliseDePerfilPage() {
         throw new Error(data?.message || 'Não foi possível enviar sua candidatura.')
       }
 
+      trackClarity(`lead_submitted_${ctaVariant}_${variant.name}`)
       router.push('/obrigado')
     } catch (err) {
       setError(
@@ -147,7 +205,11 @@ export default function AnaliseDePerfilPage() {
             <Reveal delay={200}>
               <a
                 href="#formulario"
-                className="group mt-8 inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gold px-8 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-gold/90"
+                data-cta-variant={`${ctaVariant}_${variant.name}`}
+                onClick={() =>
+                  trackClarity(`cta_click_hero_${ctaVariant}_${variant.name}`)
+                }
+                className={`group mt-8 inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 text-base font-semibold shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 ${variant.className}`}
               >
                 Quero minha análise de perfil gratuita
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -328,7 +390,11 @@ export default function AnaliseDePerfilPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="group inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold px-8 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-gold/90 disabled:cursor-not-allowed disabled:opacity-70"
+                    data-cta-variant={`${ctaVariant}_${variant.name}`}
+                    onClick={() =>
+                      trackClarity(`cta_click_form_${ctaVariant}_${variant.name}`)
+                    }
+                    className={`group inline-flex h-14 w-full items-center justify-center gap-2 rounded-full px-8 text-base font-semibold shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70 ${variant.className}`}
                   >
                     {isSubmitting ? (
                       <>
