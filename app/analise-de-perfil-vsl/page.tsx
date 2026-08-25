@@ -464,6 +464,15 @@ export default function AnaliseDePerfilVslPage() {
 function VslPlayer() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const progressEvents = useRef(new Set<number>())
+  const [isMetaInAppBrowser, setIsMetaInAppBrowser] = useState(false)
+
+  useEffect(() => {
+    setIsMetaInAppBrowser(
+      /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(
+        window.navigator.userAgent || ''
+      )
+    )
+  }, [])
 
   function handleTimeUpdate() {
     const video = videoRef.current
@@ -497,6 +506,24 @@ function VslPlayer() {
           Seu navegador não oferece suporte à reprodução de vídeo.
         </video>
       </div>
+
+      {isMetaInAppBrowser ? (
+        <div className="border-t border-white/10 bg-[#101010] px-5 py-4 text-center">
+          <p className="text-sm leading-relaxed text-white/75">
+            Se o vídeo não iniciar neste aplicativo, abra esta página no
+            navegador do celular.
+          </p>
+          <button
+            type="button"
+            onClick={() =>
+              window.open(window.location.href, '_blank', 'noopener,noreferrer')
+            }
+            className="mt-3 inline-flex min-h-11 items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Abrir no navegador
+          </button>
+        </div>
+      ) : null}
     </div>
   )
 }
